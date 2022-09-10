@@ -15,7 +15,7 @@ import {
     descriptionChange,
     donationDescriptionChange,
     locationsChange,
-    nameChange, positionChange, resetReceiver,
+    nameChange, positionChange,
     selectDescription,
     selectDonationDescription,
     selectLocations,
