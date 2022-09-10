@@ -1,0 +1,23 @@
+.loginWindow {
+    max-width: 75vw;
+    margin: auto;
+    text-align: center;
+}
+
+@media (min-width: 1024px) {
+    .loginWindow {
+        max-width: 50vw;
+    }
+}
+
+@media (min-width: 1400px) {
+    .loginWindow {
+        max-width: 40vw;
+    }
+}
+
+@media (min-width: 1400px) {
+    .loginWindow {
+        max-width: 30vw;
+    }
+}

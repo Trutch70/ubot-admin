@@ -1,0 +1,15 @@
+{
+  "short_name": "UBOT",
+  "name": "Ukraine Back on Track",
+  "icons": [
+    {
+      "src": "logo.jpeg",
+      "type": "image/jpeg",
+      "sizes": "880x360"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#E2EAFF",
+  "background_color": "#ffffff"
+}

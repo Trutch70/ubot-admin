@@ -1,0 +1,82 @@
+/* z-indexes: */
+/* 1000+ modals */
+/* 999-997 nav */
+
+@font-face {
+    font-family: Avenir;
+    src: url("../src/assets/fonts/AvenirLTStd-Roman.otf");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: Avenir;
+    src: url("../src/assets/fonts/AvenirLTStd-Black.otf");
+    font-weight: bold;
+    font-style: normal;
+}
+
+body {
+    margin: 0;
+    font-family: Avenir, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #404040;
+    font-size: 16px;
+    line-height: 20px;
+    background-color: rgba(96, 141, 255, 0.15);
+}
+
+#root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.page-content {
+    flex: 1;
+    padding-top: 85px;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+.text-blue {
+    color: #4378FF !important;
+}
+
+.text-yellow {
+    color: #FFDD55 !important;
+}
+
+@media (min-width: 760px) {
+    body {
+        font-size: 15px;
+        line-height: 22px;
+    }
+}
+
+@media (min-width: 1020px) {
+    body {
+        font-size: 15px;
+        line-height: 22px;
+    }
+
+    .page-content {
+        padding-top: 100px;
+    }
+}
+
+@media (min-width: 1400px) {
+    body {
+        font-size: 20px;
+        line-height: 30px;
+    }
+}
+
+@media (min-width: 1900px) {
+    .page-content {
+        padding-top: 120px;
+    }
+}

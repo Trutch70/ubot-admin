@@ -1,0 +1,7 @@
+.loading {
+    width: 100vw;
+    height: 100vh;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.7) url("../../../assets/loading.gif") no-repeat 50% 40%;
+    position: fixed;
+}
