@@ -24,7 +24,7 @@ const Dashboard = () => {
                     setNextActive(false);
                 }
             })
-    }, [page]);
+    }, [page, dispatch]);
 
     const nextPage = () => {
         dispatch(setLoading(true));

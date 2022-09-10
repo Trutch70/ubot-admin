@@ -13,7 +13,6 @@ import {
     selectError,
     submit, setError, resetReceiver, resetSuccess
 } from './ReceiverEditionSlice';
-import { selectToken } from '../../app/User/UserSlice';
 
 const ReceiverEdition = () => {
     const {receiverId} = useParams();
@@ -35,7 +34,7 @@ const ReceiverEdition = () => {
             dispatch(resetSuccess());
             dispatch(setError(false));
         }
-    }, []);
+    }, [dispatch, receiverId]);
 
     const onSubmit = (event) => {
         event.preventDefault();

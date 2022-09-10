@@ -48,7 +48,7 @@ const LoginPage = () => {
         if (token) {
             navigate('/');
         }
-    }, [token]);
+    }, [token, navigate]);
 
     return (
         <ContentContainer className={classes.loginWindow}>
