@@ -13,6 +13,7 @@ import {
     selectError,
     submit, setError, resetReceiver, resetSuccess
 } from './ReceiverEditionSlice';
+import { setLoading } from '../Layout/Loading/LoadingSlice';
 
 const ReceiverEdition = () => {
     const {receiverId} = useParams();
@@ -36,19 +37,23 @@ const ReceiverEdition = () => {
         }
     }, [dispatch, receiverId]);
 
+    useEffect(() => {
+        dispatch(setLoading(loading));
+    }, [loading, dispatch]);
+
     const onSubmit = (event) => {
         event.preventDefault();
         dispatch(loadingStarted());
         dispatch(setError(false));
         dispatch(resetSuccess());
-        dispatch(submit())
+        dispatch(submit());
     };
 
     return (
-        <ContentContainer>
+        <ContentContainer success={success} error={error}>
             {!loading && success && <Alert>Success!</Alert>}
             {!loading && error && <Alert severity={"error"}>{error}</Alert>}
-            {!loading && <ReceiverForm onSubmit={onSubmit}/>}
+            <ReceiverForm onSubmit={onSubmit} success={success}/>
         </ContentContainer>
     );
 };

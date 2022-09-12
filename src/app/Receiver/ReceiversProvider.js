@@ -6,7 +6,7 @@ const fetchReceivers = async (page = 1, limit = 8) => {
             }
             return response.json();
         })
-        ;
+    ;
 };
 
 const fetchReceiver = async (id) => {
@@ -21,7 +21,7 @@ const fetchReceiver = async (id) => {
 
             return response.json();
         })
-        ;
+    ;
 };
 
 const ReceiversProvider = {

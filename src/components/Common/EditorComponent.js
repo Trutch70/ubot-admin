@@ -5,16 +5,16 @@ import draftToHtml from 'draftjs-to-html';
 import htmlToDraft from 'html-to-draftjs';
 import { EditorState, convertToRaw, ContentState } from 'draft-js';
 
-const EditorComponent = ({setEditorRef, id, html, onChange}) => {
+const EditorComponent = ({onChange, initialContent}) => {
     const [editorState, setEditorState] = useState(EditorState.createEmpty());
 
     useEffect(() => {
-        const contentBlock = htmlToDraft(html);
+        const contentBlock = htmlToDraft(initialContent);
         const contentState = ContentState.createFromBlockArray(contentBlock.contentBlocks);
         const state = EditorState.createWithContent(contentState);
 
         setEditorState(state);
-    }, [html]);
+    }, [initialContent]);
 
     const onEditorStateChange = (newState) => {
         setEditorState(newState);
@@ -23,11 +23,9 @@ const EditorComponent = ({setEditorRef, id, html, onChange}) => {
 
     return (
         <Editor
-            id={id}
             editorState={editorState}
             onEditorStateChange={onEditorStateChange}
             editorStyle={{padding: '1em', maxHeight: "30vh", overflowY: "scroll"}}
-            editorRef={setEditorRef}
         />
     );
 }

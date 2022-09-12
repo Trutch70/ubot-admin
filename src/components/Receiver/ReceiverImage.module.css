@@ -1,0 +1,59 @@
+.img-container {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    position: relative;
+    display: inline-block;
+}
+
+.img-container:hover .cover {
+    display: flex;
+}
+
+.img-container.selected {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    border: 5px #008af8 solid;
+}
+
+.dummy {
+    margin-top: 100%;
+}
+
+.cover {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(64, 64, 64, 0.8);
+    display: none;
+}
+
+.buttons-container {
+    display: flex;
+    text-align: center;
+    height: 40%;
+    margin: auto;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.icon-button {
+    border: 1px white solid;
+    color: white;
+    background: transparent;
+    padding: 10% 10%;
+}
+
+.icon-button:hover {
+    background: rgba(255, 255, 255, 0.15);
+    cursor: pointer;
+}
+
+.icon-button:disabled {
+    background: rgba(255, 255, 255, 0.5);
+    cursor: not-allowed;
+    color: rgba(64, 64, 64, 0.8);
+}

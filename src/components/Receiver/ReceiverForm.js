@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import EditorComponent from '../Common/EditorComponent';
 import { Link } from 'react-router-dom';
 import {
+    Box,
     Button,
     Card,
     FormControl,
@@ -16,22 +17,27 @@ import {
     donationDescriptionChange,
     locationsChange,
     nameChange, positionChange,
-    selectDescription,
-    selectDonationDescription,
+    selectDonationDescription, selectEdition, selectInitialDescription,
     selectLocations,
     selectName,
     selectPosition
 } from './ReceiverEditionSlice';
 import LocationsProvider from '../../app/Location/LocationsProvider';
+import ReceiverImages from './ReceiverImages';
+import ReceiverImageInput from './ReceiverImageInput';
+import ReceiverLinks from './Links/ReceiverLinks';
+import ReceiverLinksEditionDialog from './Links/ReceiverLinksEditionDialog';
 
 const ReceiverForm = ({onSubmit}) => {
     const [locations, setLocations] = useState([]);
     const dispatch = useDispatch();
     const name = useSelector(selectName);
-    const description = useSelector(selectDescription);
     const donationDescription = useSelector(selectDonationDescription);
     const receiverLocations = useSelector(selectLocations);
     const position = useSelector(selectPosition);
+    const initialDescription = useSelector(selectInitialDescription);
+    const edition = useSelector(selectEdition);
+    const [linksOpen, setLinksOpen] = useState(false);
 
     useEffect(() => {
         LocationsProvider.fetchLocations()
@@ -41,9 +47,27 @@ const ReceiverForm = ({onSubmit}) => {
         ;
     }, []);
 
+    const handleLinksOpen = () => {
+        setLinksOpen(true);
+    }
+
     return (
         <form onSubmit={onSubmit}>
-            <h1>{name}</h1>
+            <Box display={'flex'} justifyContent={'space-between'} alignItems={'center'}>
+                <h1>{name}</h1>
+                {
+                    edition &&
+                    <>
+                        <Button
+                            variant={'contained'}
+                            onClick={handleLinksOpen}
+                        >
+                            Edit links
+                        </Button>
+                        <ReceiverLinksEditionDialog open={linksOpen} handleClose={() => {setLinksOpen(false)}} />
+                    </>
+                }
+            </Box>
             <br/>
             <FormControl>
                 <TextField
@@ -67,7 +91,7 @@ const ReceiverForm = ({onSubmit}) => {
                     sx={{mb: 3}}
                 >
                     <EditorComponent
-                        html={description}
+                        initialContent={initialDescription}
                         onChange={(text) => dispatch(descriptionChange(text))}
                     />
                 </Card>
@@ -109,11 +133,18 @@ const ReceiverForm = ({onSubmit}) => {
                 value={position}
                 onChange={(event) => dispatch(positionChange(event.target.value))}
             />
+            { !edition && <ReceiverLinks /> }
+            {
+                edition && <>
+                    <ReceiverImages/>
+                    <ReceiverImageInput />
+                </>
+            }
             <div style={{textAlign: "right"}}>
                 <Link style={{textDecoration: "none"}} to={"/"}>
                     <Button sx={{mr: 2}} variant={"outlined"} type={"button"}>Back</Button>
                 </Link>
-                <Button variant={"contained"} type={"submit"}>Submit</Button>
+                <Button variant={"contained"} type={"submit"}>Save</Button>
             </div>
         </form>
     );
